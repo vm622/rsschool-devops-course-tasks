@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "github_actions_assume_role_policy" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:vm622/test:*"]
+      values   = ["repo:vm622/rsschool-devops-course-tasks:*"]
     }
   }
 }
