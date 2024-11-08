@@ -80,7 +80,7 @@ resource "aws_iam_policy" "dynamodb_tfstate_lock_policy" {
         "Action" : [
           "dynamodb:*"
         ]
-        "Resource" : "${aws_dynamodb_table.terraform_dynamodb_locks.arn}"
+        "Resource" : "${var.tf_dynamodb_locks_arn}"
       }
     ]
   })
@@ -90,4 +90,3 @@ resource "aws_iam_role_policy_attachment" "dynamodb_tfstate_lock_acccess" {
   role       = aws_iam_role.github_actions_role.name
   policy_arn = aws_iam_policy.dynamodb_tfstate_lock_policy.arn
 }
-
