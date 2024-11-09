@@ -18,3 +18,11 @@ module "iam" {
   source                = "./modules/iam"
   tf_dynamodb_locks_arn = module.init_state.tf_dynamodb_locks_arn
 }
+
+module "network" {
+  source          = "./modules/network"
+  vpc_name        = var.vpc_name
+  vpc_cidr        = var.vpc_cidr
+  public_subnets  = var.public_subnets
+  private_subnets = var.private_subnets
+}
