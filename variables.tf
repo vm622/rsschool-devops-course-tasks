@@ -47,3 +47,16 @@ variable "private_subnets" {
   description = "A list of private subnets"
   default     = []
 }
+
+variable "subnets_acl" {
+  type = map(map(object({
+    rule_number = number
+    egress      = bool
+    cidr_block  = string
+    protocol    = string
+    from_port   = number
+    to_port     = number
+    rule_action = string
+  })))
+  default = {}
+}
