@@ -1,3 +1,11 @@
+data "aws_availability_zones" "zones" {
+  state = "available"
+}
+
+locals {
+  zones = data.aws_availability_zones.zones.names
+}
+
 resource "aws_subnet" "public_subnet" {
   count             = length(var.public_subnets)
   vpc_id            = aws_vpc.main_vpc.id
