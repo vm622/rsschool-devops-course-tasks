@@ -27,3 +27,19 @@ variable "private_subnets" {
   description = "A list of private subnets"
   default     = []
 }
+
+variable "public_route_table_map" {
+  type = map(object({
+    destination_cidr_block = string
+    gateway_id             = string
+  }))
+  default = {}
+}
+
+variable "private_route_table_map" {
+  type = map(object({
+    destination_cidr_block = string
+    gateway_id             = string
+  }))
+  default = {}
+}
