@@ -23,3 +23,9 @@ variable "s3_bucket_name" {
 ################################################################
 # Network
 ################################################################
+
+variable "admin_ips" {
+  type        = list(string)
+  description = "A list of admin IPs that may access instances in public subnets"
+  default     = ["0.0.0.0/0"]
+}

@@ -65,3 +65,32 @@ variable "one_natgw_per_az" {
   description = "Create one NAT gateway per AZ"
   default     = true
 }
+
+variable "admin_ips" {
+  type        = list(string)
+  description = "A list of admin IPs that may access instances in public subnets"
+}
+
+variable "public_sg_inbound" {
+  description = "Security group inbound rules for public instance"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "public_sg_outbound" {
+  description = "Security group outbound rules for public instance"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "private_sg_inbound" {
+  description = "Security group inbound rules for private instance"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "private_sg_outbound" {
+  description = "Security group outbound rules for private instance"
+  type        = list(map(string))
+  default     = []
+}
