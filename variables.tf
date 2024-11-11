@@ -23,8 +23,3 @@ variable "s3_bucket_name" {
 ################################################################
 # Network
 ################################################################
-
-variable "private_inbound_acl_rules" {
-  description = "Private subnets inbound network ACL rules"
-  type        = list(map(string))
-}

@@ -34,64 +34,30 @@ variable "private_route_table_list" {
   default     = []
 }
 
+
 variable "public_inbound_acl_rules" {
   description = "Public subnets inbound network ACL rules"
   type        = list(map(string))
-  default = [
-    {
-      rule_number = 100
-      cidr_block  = "0.0.0.0/0"
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 0
-      rule_action = "allow"
-    },
-  ]
+  default     = []
 }
 
 variable "public_outbound_acl_rules" {
   description = "Public subnets outbound network ACL rules"
   type        = list(map(string))
-  default = [
-    {
-      rule_number = 100
-      cidr_block  = "0.0.0.0/0"
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 0
-      rule_action = "allow"
-    },
-  ]
+  default     = []
 }
 
 variable "private_inbound_acl_rules" {
   description = "Private subnets inbound network ACL rules"
   type        = list(map(string))
-  default = [
-    {
-      rule_number = 100
-      cidr_block  = "0.0.0.0/0"
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 0
-      rule_action = "allow"
-    },
-  ]
+  default     = []
 }
+
 
 variable "private_outbound_acl_rules" {
   description = "Private subnets outbound network ACL rules"
   type        = list(map(string))
-  default = [
-    {
-      rule_number = 100
-      cidr_block  = "0.0.0.0/0"
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 0
-      rule_action = "allow"
-    },
-  ]
+  default     = []
 }
 
 variable "one_natgw_per_az" {
@@ -99,10 +65,3 @@ variable "one_natgw_per_az" {
   description = "Create one NAT gateway per AZ"
   default     = true
 }
-
-# variable "instance_sg" {
-#   description = "Security group rules for instance"
-#   type = map(object({
-
-#   }))
-# }
