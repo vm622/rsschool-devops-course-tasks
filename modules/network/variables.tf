@@ -29,6 +29,7 @@ variable "private_subnets" {
 }
 
 variable "public_route_table_map" {
+  description = "Route table for public subnets"
   type = map(object({
     destination_cidr_block = string
     gateway_id             = string
@@ -37,6 +38,7 @@ variable "public_route_table_map" {
 }
 
 variable "private_route_table_map" {
+  description = "Route table for private subnets"
   type = map(object({
     destination_cidr_block = string
     gateway_id             = string
@@ -45,6 +47,7 @@ variable "private_route_table_map" {
 }
 
 variable "subnets_acl" {
+  description = "Network ACL list for subnets"
   type = map(map(object({
     rule_number = number
     egress      = bool
