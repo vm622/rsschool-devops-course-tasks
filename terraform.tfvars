@@ -3,14 +3,9 @@ aws_region = "eu-central-1"
 s3_bucket_name      = "vm622-rsschool-tf-state"
 dynamodb_table_name = "vm622-rsschool-tf-state-lock"
 
-vpc_name        = "My VPC"
-vpc_cidr        = "10.0.0.0/22"
-public_subnets  = ["10.0.0.0/24", "10.0.1.0/24"]
-private_subnets = ["10.0.2.0/24", "10.0.3.0/24"]
-
 subnets_acl = {
   "public" = {
-    "allow-all-egress" = {
+    "allow-all-outbound" = {
       rule_number = 100
       egress      = true
       cidr_block  = "0.0.0.0/0"
@@ -19,7 +14,7 @@ subnets_acl = {
       to_port     = -1
       rule_action = "allow"
     },
-    "allow-all-ingress" = {
+    "allow-all-inbound" = {
       rule_number = 100
       egress      = false
       cidr_block  = "0.0.0.0/0"
@@ -30,7 +25,7 @@ subnets_acl = {
     }
   },
   "private" = {
-    "allow-all-egress" = {
+    "allow-all-inbound" = {
       rule_number = 100
       egress      = true
       cidr_block  = "0.0.0.0/0"
@@ -39,7 +34,7 @@ subnets_acl = {
       to_port     = -1
       rule_action = "allow"
     },
-    "allow-ssh-ingress" = {
+    "allow-ssh-outbound" = {
       rule_number = 1
       egress      = false
       cidr_block  = "0.0.0.0/0"

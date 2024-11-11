@@ -24,30 +24,6 @@ variable "s3_bucket_name" {
 # Network
 ################################################################
 
-variable "vpc_name" {
-  type        = string
-  description = "VPC name"
-  default     = "my-vpc"
-}
-
-variable "vpc_cidr" {
-  type        = string
-  description = "VPC CIDR block"
-  default     = ""
-}
-
-variable "public_subnets" {
-  type        = list(string)
-  description = "A list of public subnets"
-  default     = []
-}
-
-variable "private_subnets" {
-  type        = list(string)
-  description = "A list of private subnets"
-  default     = []
-}
-
 variable "subnets_acl" {
   type = map(map(object({
     rule_number = number

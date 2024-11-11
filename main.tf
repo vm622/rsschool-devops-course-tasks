@@ -21,9 +21,9 @@ module "iam" {
 
 module "network" {
   source          = "./modules/network"
-  vpc_name        = var.vpc_name
-  vpc_cidr        = var.vpc_cidr
-  public_subnets  = var.public_subnets
-  private_subnets = var.private_subnets
+  vpc_name        = "My VPC"
+  vpc_cidr        = "10.0.0.0/22"
+  public_subnets  = ["10.0.0.0/24", "10.0.1.0/24"]
+  private_subnets = ["10.0.2.0/24", "10.0.3.0/24"]
   subnets_acl     = var.subnets_acl
 }
