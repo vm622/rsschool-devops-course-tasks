@@ -24,15 +24,7 @@ variable "s3_bucket_name" {
 # Network
 ################################################################
 
-variable "subnets_acl" {
-  type = map(map(object({
-    rule_number = number
-    egress      = bool
-    cidr_block  = string
-    protocol    = string
-    from_port   = number
-    to_port     = number
-    rule_action = string
-  })))
-  default = {}
+variable "private_inbound_acl_rules" {
+  description = "Private subnets inbound network ACL rules"
+  type        = list(map(string))
 }
