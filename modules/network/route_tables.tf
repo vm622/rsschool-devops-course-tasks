@@ -39,7 +39,13 @@ resource "aws_route_table" "private_route_table" {
   dynamic "route" {
     for_each = concat(
       local.default_route_table_list,
-      var.private_route_table_list
+      var.private_route_table_list,
+      [
+        {
+          destination_cidr_block = "0.0.0.0/0"
+          gateway_id             = aws_nat_gateway.my_natgw[0].id
+        }
+      ]
     )
     content {
       cidr_block = route.value.destination_cidr_block

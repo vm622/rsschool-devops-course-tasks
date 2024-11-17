@@ -15,3 +15,5 @@ crash.*.log
 
 # Ignore sensitive tfvars data
 *.auto.tfvars
+
+secrets/*

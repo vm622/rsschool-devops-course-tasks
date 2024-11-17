@@ -5,7 +5,13 @@ locals {
       ip_protocol = "icmp"
       from_port   = -1
       to_port     = -1
-    }
+    },
+    {
+      cidr_ipv4   = "0.0.0.0/0"
+      ip_protocol = "tcp"
+      from_port   = 22
+      to_port     = 22
+    },
   ]
 
   default_public_sg_outbound_rules = [
@@ -34,6 +40,14 @@ locals {
         to_port     = 22
       }
     ],
+    [
+      {
+        cidr_ipv4   = var.vpc_cidr
+        ip_protocol = "all"
+        from_port   = -1
+        to_port     = -1
+      }
+    ]
   )
 
   default_private_sg_outbound_rules = [
