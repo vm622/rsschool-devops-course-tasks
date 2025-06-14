@@ -8,8 +8,12 @@ terraform {
   }
 }
 
-
 module "backend_state" {
   source                         = "./modules/backend_state"
   terraform_state_s3_bucket_name = var.terraform_state_s3_bucket_name
+}
+
+module "iam" {
+  source                                = "./modules/iam"
+  github_actions_role_trust_policy_user = var.github_actions_role_trust_policy_user
 }
