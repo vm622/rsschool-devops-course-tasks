@@ -14,6 +14,5 @@ module "backend_state" {
 }
 
 module "iam" {
-  source                                = "./modules/iam"
-  github_actions_role_trust_policy_user = var.github_actions_role_trust_policy_user
+  source = "./modules/iam"
 }

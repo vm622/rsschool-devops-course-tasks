@@ -17,13 +17,35 @@ resource "aws_iam_role" "github_actions_role" {
 
 data "aws_iam_policy_document" "github_actions_role_trust_policy" {
   statement {
-    actions = ["sts:AssumeRole"]
+    actions = ["sts:AssumeRoleWithWebIdentity"]
 
     principals {
-      type        = "AWS"
-      identifiers = [var.github_actions_role_trust_policy_user]
+      type        = "Federated"
+      identifiers = [aws_iam_openid_connect_provider.github_oidc_provider.arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringLike"
+      variable = "token.actions.githubusercontent.com:sub"
+      values   = ["repo:vm622/rsschool-devops-course-tasks:*"]
     }
   }
+}
+
+resource "aws_iam_openid_connect_provider" "github_oidc_provider" {
+  url = "https://token.actions.githubusercontent.com"
+
+  client_id_list = [
+    "sts.amazonaws.com",
+  ]
+
+  thumbprint_list = ["2b18947a6a9fc7764fd8b5fb18a863b0c6dac24f"]
 }
 
 resource "aws_iam_role_policy_attachment" "github_actions_role_aws_managed_policies_attachment" {
