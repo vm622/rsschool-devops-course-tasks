@@ -4,6 +4,13 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+.terraform.lock.hcl
+
+# Terraform environmental variables
+.env
+
+# Terraform backend config file
+terraform-backend.conf
 
 # Crash log files
 crash.log
