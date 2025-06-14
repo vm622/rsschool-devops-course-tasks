@@ -1,4 +1,11 @@
 terraform {
+  backend "s3" {
+    bucket       = "vm622-rsschool-devops-2025q2-terraform-state"
+    key          = "rsschool-devops-tf-state.tfstate"
+    region       = "us-east-1"
+    encrypt      = true
+    use_lockfile = true
+  }
 }
 
 
