@@ -18,6 +18,13 @@ jobs:
       TF_VAR_terraform_state_s3_bucket_name: ${{ vars.TF_BACKEND_S3_BUCKET }}
       TF_VAR_aws_region: ${{ vars.AWS_REGION }}
     steps:
+      - name: Mask Terraform env and backend variables
+        run: |
+          echo "::add-mask::${{ env.TF_VAR_terraform_state_s3_bucket_name }}"
+          echo "::add-mask::${{ env.TF_VAR_aws_region }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET_KEY }}"
+          echo "::add-mask::${{ vars.AWS_REGION }}"
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up Terraform
@@ -45,6 +52,13 @@ jobs:
       TF_VAR_terraform_state_s3_bucket_name: ${{ vars.TF_BACKEND_S3_BUCKET }}
       TF_VAR_aws_region: ${{ vars.AWS_REGION }}
     steps:
+      - name: Mask Terraform env and backend variables
+        run: |
+          echo "::add-mask::${{ env.TF_VAR_terraform_state_s3_bucket_name }}"
+          echo "::add-mask::${{ env.TF_VAR_aws_region }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET_KEY }}"
+          echo "::add-mask::${{ vars.AWS_REGION }}"
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up Terraform
@@ -72,6 +86,13 @@ jobs:
       TF_VAR_terraform_state_s3_bucket_name: ${{ vars.TF_BACKEND_S3_BUCKET }}
       TF_VAR_aws_region: ${{ vars.AWS_REGION }}
     steps:
+      - name: Mask Terraform env and backend variables
+        run: |
+          echo "::add-mask::${{ env.TF_VAR_terraform_state_s3_bucket_name }}"
+          echo "::add-mask::${{ env.TF_VAR_aws_region }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET }}"
+          echo "::add-mask::${{ vars.TF_BACKEND_S3_BUCKET_KEY }}"
+          echo "::add-mask::${{ vars.AWS_REGION }}"
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up Terraform
