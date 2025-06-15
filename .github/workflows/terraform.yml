@@ -28,7 +28,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_GITHUB_ACTIONS_ROLE_ARN }}
       - name: Generate Terraform backend config
-      - run: |
+        run: |
           echo "bucket=\"${{ vars.TF_BACKEND_S3_BUCKET }}\"" > backend.conf
           echo "key=\"${{ vars.TF_BACKEND_S3_BUCKET_KEY }}\"" >> backend.conf
           echo "region=\"${{ vars.AWS_REGION }}\"" >> backend.conf
@@ -55,7 +55,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_GITHUB_ACTIONS_ROLE_ARN }}
       - name: Generate Terraform backend config
-      - run: |
+        run: |
           echo "bucket=\"${{ vars.TF_BACKEND_S3_BUCKET }}\"" > backend.conf
           echo "key=\"${{ vars.TF_BACKEND_S3_BUCKET_KEY }}\"" >> backend.conf
           echo "region=\"${{ vars.AWS_REGION }}\"" >> backend.conf
@@ -81,7 +81,8 @@ jobs:
         with:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_GITHUB_ACTIONS_ROLE_ARN }}
-      - run: |
+      - name: Generate Terraform backend config
+        run: |
           echo "bucket=\"${{ vars.TF_BACKEND_S3_BUCKET }}\"" > backend.conf
           echo "key=\"${{ vars.TF_BACKEND_S3_BUCKET_KEY }}\"" >> backend.conf
           echo "region=\"${{ vars.AWS_REGION }}\"" >> backend.conf
